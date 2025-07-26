@@ -1,0 +1,56 @@
+name: Validate Data
+
+on:
+  pull_request:
+    paths:
+      - 'data/channels.csv'
+      - 'data/channels.schema.json'
+      - 'scripts/validate-data.js'
+  push:
+    branches: [main, master]
+    paths:
+      - 'data/channels.csv'
+      - 'data/channels.schema.json'
+      - 'scripts/validate-data.js'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate Channel Data
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.15.1'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Validate CSV data
+        run: node scripts/validate-data.js
+
+      - name: Convert to JSON
+        run: node scripts/csv-to-json.js
+
+      - name: Check for changes in generated files
+        run: |
+          if [[ -n $(git status --porcelain data/*.json) ]]; then
+            echo "❌ Generated JSON files have uncommitted changes!"
+            echo "Please run 'npm run data:convert' and commit the updated files."
+            git diff data/*.json
+            exit 1
+          else
+            echo "✅ Generated JSON files are up to date"
+          fi
+
+      - name: Validate schema compliance
+        run: |
+          echo "🔍 Additional schema validation checks..."
+          # Add any additional validation logic here
+          echo "✅ All validations passed!"

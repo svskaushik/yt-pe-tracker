@@ -1,0 +1,15 @@
+packages:
+  - web
+  - extension
+  - extension/chrome-extension
+  - extension/pages/*
+  - extension/packages/*
+  - extension/tests/*
+
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@swc/core'
+  - edgedriver
+  - esbuild
+  - geckodriver
+  - unrs-resolver

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "ready": {
+      "dependsOn": ["^ready"],
+      "outputs": ["dist/**", "../../dist/**"],
+      "cache": false
+    },
+    "build": {
+      "dependsOn": ["ready", "^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "../../dist/**"],
+      "env": ["NODE_ENV", "NEXT_PUBLIC_*", "POSTGRES_*", "CEB_*", "CLI_CEB_*"]
+    },
+    "dev": {
+      "dependsOn": ["ready"],
+      "cache": false,
+      "persistent": true,
+      "outputs": ["dist/**", "../../dist/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "outputs": [],
+      "cache": false
+    },
+    "lint:fix": {
+      "dependsOn": ["^lint:fix"],
+      "outputs": [],
+      "cache": false
+    },
+    "format": {
+      "dependsOn": ["^format"],
+      "outputs": [],
+      "cache": false
+    },
+    "type-check": {
+      "dependsOn": ["^type-check"],
+      "outputs": [],
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
+    },
+    "e2e": {
+      "cache": false
+    },
+    "clean": {
+      "cache": false
+    },
+    "clean:node_modules": {
+      "dependsOn": ["^clean:node_modules"],
+      "cache": false
+    },
+    "clean:turbo": {
+      "dependsOn": ["^clean:turbo"],
+      "cache": false
+    },
+    "clean:bundle": {
+      "dependsOn": ["^clean:bundle"],
+      "cache": false
+    },
+    "zip": {
+      "dependsOn": ["build"],
+      "outputs": ["dist/**/*.zip"]
+    }
+  },
+  "globalDependencies": [
+    "package.json",
+    "pnpm-workspace.yaml",
+    "tsconfig.base.json",
+    "eslint.config.js",
+    ".prettierrc",
+    ".editorconfig",
+    ".env"
+  ],
+  "globalEnv": ["NODE_ENV", "CI", "CEB_*", "CLI_CEB_*"],
+  "concurrency": "12"
+}

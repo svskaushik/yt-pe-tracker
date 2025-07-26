@@ -1,0 +1,80 @@
+name: Update README Table
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'data/channels.csv'
+  schedule:
+    # Run daily at 6 AM UTC to keep the table fresh
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    name: Update README with latest data
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.15.1'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Validate data first
+        run: node scripts/validate-data.js
+
+      - name: Generate updated JSON files
+        run: node scripts/csv-to-json.js
+
+      - name: Update README table
+        run: node scripts/generate-readme-table.js
+
+      - name: Check for changes
+        id: verify-changed-files
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "✅ Changes detected in README or data files"
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ No changes detected"
+          fi
+
+      - name: Commit changes
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md data/*.json
+          git commit -m "📊 Auto-update README table and data files" || exit 0
+
+      - name: Push changes
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+
+      - name: Summary
+        run: |
+          echo "## 📊 README Update Summary" >> $GITHUB_STEP_SUMMARY
+          if [[ "${{ steps.verify-changed-files.outputs.changed }}" == "true" ]]; then
+            echo "✅ README table updated with latest channel data" >> $GITHUB_STEP_SUMMARY
+            echo "📈 Check the updated table in the main README.md" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ No changes were needed - table is already up to date" >> $GITHUB_STEP_SUMMARY
+          fi

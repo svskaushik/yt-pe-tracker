@@ -1,0 +1,78 @@
+{
+  "name": "yt-pe-tracker",
+  "version": "1.0.0",
+  "description": "YouTube Channel Private Equity Ownership Tracker - Community-driven resource tracking PE acquisitions of YouTube channels",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.15.1",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@10.11.0",
+  "scripts": {
+    "clean": "pnpm -r clean && rimraf node_modules .turbo",
+    "install:all": "pnpm install --frozen-lockfile",
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint --continue",
+    "lint:fix": "turbo lint:fix --continue",
+    "format": "turbo format --continue",
+    "type-check": "turbo type-check",
+    "test": "turbo test",
+    "extension:dev": "pnpm --filter extension dev",
+    "extension:build": "pnpm --filter extension build",
+    "extension:zip": "pnpm --filter extension zip",
+    "web:dev": "pnpm --filter web dev",
+    "web:build": "pnpm --filter web build",
+    "web:start": "pnpm --filter web start",
+    "data:validate": "node scripts/validate-data.js",
+    "data:convert": "node scripts/csv-to-json.js",
+    "data:table": "node scripts/generate-readme-table.js",
+    "prepare": "husky"
+  },
+  "workspaces": [
+    "web",
+    "extension",
+    "extension/chrome-extension",
+    "extension/pages/*",
+    "extension/packages/*",
+    "extension/tests/*"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^9.27.0",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "turbo": "^2.5.3",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,md}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "keywords": [
+    "youtube",
+    "private-equity",
+    "tracker",
+    "community",
+    "chrome-extension",
+    "nextjs"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/yt-pe-tracker.git"
+  },
+  "dependencies": {
+    "unenv": "^1.10.0"
+  }
+}

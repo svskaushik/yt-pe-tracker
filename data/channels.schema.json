@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "YouTube Channel PE Ownership Database Schema",
+  "description": "Schema for tracking private equity ownership of YouTube channels",
+  "type": "object",
+  "properties": {
+    "channels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/channel"
+      }
+    }
+  },
+  "required": ["channels"],
+  "definitions": {
+    "channel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique identifier for this record"
+        },
+        "channel_id": {
+          "type": "string",
+          "pattern": "^UC[a-zA-Z0-9_-]{22}$",
+          "description": "YouTube channel ID (starts with UC, 24 characters total)"
+        },
+        "channel_name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "description": "Display name of the YouTube channel"
+        },
+        "channel_handle": {
+          "type": ["string", "null"],
+          "pattern": "^@[a-zA-Z0-9._-]+$",
+          "description": "YouTube channel handle (e.g., @MrBeast)"
+        },
+        "subscriber_count": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Approximate subscriber count at time of acquisition"
+        },
+        "pe_firm": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "description": "Name of the private equity firm or investment company"
+        },
+        "acquisition_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of PE acquisition (YYYY-MM-DD)"
+        },
+        "acquisition_type": {
+          "type": "string",
+          "enum": [
+            "full_acquisition",
+            "majority_stake",
+            "minority_stake",
+            "partnership",
+            "investment",
+            "unknown"
+          ],
+          "description": "Type of PE involvement"
+        },
+        "deal_value": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "description": "Deal value in USD (if publicly disclosed)"
+        },
+        "deal_value_currency": {
+          "type": "string",
+          "default": "USD",
+          "enum": ["USD", "EUR", "GBP", "CAD", "AUD", "other"],
+          "description": "Currency of the deal value"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "confirmed",
+            "rumored", 
+            "pending",
+            "withdrawn",
+            "denied"
+          ],
+          "description": "Verification status of the acquisition"
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Primary source URL for this information"
+        },
+        "additional_sources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": "Additional source URLs"
+        },
+        "notes": {
+          "type": ["string", "null"],
+          "maxLength": 500,
+          "description": "Additional notes or context"
+        },
+        "last_updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When this record was last updated"
+        },
+        "verified_by": {
+          "type": ["string", "null"],
+          "description": "GitHub username of person who verified this information"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "gaming",
+              "entertainment",
+              "education",
+              "tech",
+              "lifestyle",
+              "news",
+              "sports",
+              "music",
+              "comedy",
+              "business",
+              "family",
+              "beauty",
+              "food",
+              "travel",
+              "other"
+            ]
+          },
+          "description": "Channel category tags"
+        }
+      },
+      "required": [
+        "id",
+        "channel_id", 
+        "channel_name",
+        "pe_firm",
+        "acquisition_date",
+        "acquisition_type",
+        "status",
+        "source_url",
+        "last_updated"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
