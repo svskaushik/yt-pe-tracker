@@ -1,1 +1,9 @@
 node_modules
+.turbo/
+.output/
+dist/
+*.tsbuildinfo
+.env*
+.DS_Store
+.idea/
+.vscode/

@@ -8,30 +8,32 @@ export default function MainFooter() {
       <div className="container px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-4 max-w-full">
         <div className="flex items-center space-x-2">
           <span className="text-sm font-semibold text-[var(--foreground)] font-poppins">
-            NextBoiler
+            YouTube PE Tracker
           </span>
           <span className="text-sm text-[var(--muted-foreground)]">
-            © {new Date().getFullYear()} All rights reserved.
+            © {new Date().getFullYear()} Community Project
           </span>
         </div>
         <nav className="flex flex-wrap justify-center gap-4 md:gap-6">
           <Link
-            href="/docs"
+            href="/submit"
             className="text-sm text-[var(--muted-foreground)] hover:text-[var(--primary)] transition-colors duration-200"
           >
-            Documentation
+            Submit Channel
           </Link>
           <Link
-            href="/privacy"
+            href="https://github.com/yourusername/yt-pe-tracker"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-sm text-[var(--muted-foreground)] hover:text-[var(--primary)] transition-colors duration-200"
           >
-            Privacy
+            GitHub
           </Link>
           <Link
-            href="/terms"
+            href="/about"
             className="text-sm text-[var(--muted-foreground)] hover:text-[var(--primary)] transition-colors duration-200"
           >
-            Terms
+            About
           </Link>
         </nav>
       </div>

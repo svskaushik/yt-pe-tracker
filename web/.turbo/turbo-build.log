@@ -1,22 +1,60 @@
 [?9001h[?1004h[?25l[2J[m[2;1H> web@1.0.0 build C:\Projects\yt-pe-tracker\web
 > next build[5;1H]0;C:\WINDOWS\system32\cmd.exe[?25h   [38;2;173;127;168m[1m▲ Next.js 15.4.4
 [?25l[m   - Environments: .env.local[8;1H[?25h [37m[1m [m Creating an optimized production build ...
-<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (158kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
- [32m[1m✓[m Compiled successfully in 15.0s
+ [32m[1m✓[m Compiled successfully in 2000ms
  [37m[1m [m Skipping validation of types
  [37m[1m [m Skipping linting
-[?25l [37m[1m [m Collecting page data  [36m.[m[K[88C [37m[1m [m Collecting page data  [36m..[m[K[88C [37m[1m [m Collecting page data  [36m...[m[K[88C [37m[1m [m Collecting page data  [36m.[m[K[88C [37m[1m [m Collecting page data  [36m..[m[K[88C [32m[1m✓[m Collecting page data    
-[?25h[?25l [37m[1m [m Generating static pages (0/8)  [36m[    ][m[K[88C [37m[1m [m Generating static pages (0/8)  [36m[=   ][m[K[88C [37m[1m [m Generating static pages (0/8)  [36m[==  ][m[K[88C [37m[1m [m Generating static pages (2/8)  [36m[=== ][m[K[88C [32m[1m✓[m Generating static pages (8/8)
-[?25h[?25l [37m[1m [m Finalizing page optimization  [36m. [37m[1m [m Collecting build traces  [36m.[m[K[88C [37m[1m [m Collecting build traces  [36m..[K[58C[m[K[88C [37m[1m [m Collecting build traces  [36m...[K[57C[m[K[88C [37m[1m [m Collecting build traces  [36m.[K[59C[m[K[88C [37m[1m [m Collecting build traces  [36m..[K[58C[m[K[88C [37m[1m [m Collecting build traces  [36m...[K[57C[m[K[88C [37m[1m [m Collecting build traces  [36m.[K[59C[m[K[88C [37m[1m [m Collecting build traces  [36m..[K[58C[m[K[88C [37m[1m [m Collecting build traces  [36m...[K[57C[m[K[88C [37m[1m [m Collecting build traces  [36m.[K[59C[m[K[88C [37m[1m [m Collecting build traces  [36m..[K[58C[m[K[88C [37m[1m [m Collecting build traces  [36m...[K[57C[m[K[88C [37m[1m [m Collecting build traces  [36m.[K[59C[m[K[88C [37m[1m [m Collecting build traces  [36m..[K[58C[m[K[88C [37m[1m [m Collecting build traces  [36m...[K[57C[m[K[88C [37m[1m [m Collecting build traces  [36m.[K[59C[m[K[88C [37m[1m [m Collecting build traces  [36m..[K[58C[m[K[88C [37m[1m [m Collecting build traces  [36m...[K[57C[m[K[88C [37m[1m [m Collecting build traces  [36m.[K[59C[m[K[88C [32m[1m✓[m Collecting build traces    
- [32m[1m✓[m Finalizing page optimization[K[4m[19;1HRoute (app)[24m[33X[4m[33CSize[24m  [4mFirst Load JS[24m    
-┌ ○ /                                    2.42 kB[9X[37m[1m[9C143 kB[m
-├ ○ /_not-found                            131 B[9X[37m[1m[9C100 kB[m
-├ ƒ /api/posts                             131 B[9X[37m[1m[9C100 kB[m
-├ ƒ /api/webhooks/clerk                    131 B[9X[37m[1m[9C100 kB[?25h[m
-├ ○ /dashboard                           1.43 kB[37m[1m[9C168 kB[m[K
-├ ○ /posts                               27.9 kB[37m[1m[9C173 kB[m[K
+[?25l [37m[1m [m Collecting page data  [36m.[m[K[115C [37m[1m [m Collecting page data  [36m..[m[K[115C [37m[1m [m Collecting page data  [36m...[m[K[115C [37m[1m [m Collecting page data  [36m.[m[K[115C [37m[1m [m Collecting page data  [36m..[m[K[115C [37m[1m [m Collecting page data  [36m...[m[K[115C [32m[1m✓[m Collecting page data    
+[?25h[?25l [37m[1m [m Generating static pages (0/10)  [36m[    ][m[K[115C [37m[1m [m Generating static pages (0/10)  [36m[=   ][m[K[115C [37m[1m [m Generating static pages (0/10)  [36m[==  ][m[K[115C [37m[1m [m Generating static pages (0/10)  [36m[=== ][m[K[115CError fetching channels data from GitHub: Error: Dynamic server usage: Route / couldn't be rendered statically because it used revalidate: 0 fetch https://raw.githubusercontent.com/svskaushik/yt-pe-tracker/refs/heads/main/data/channels.min.json /. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+    at p (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:57558)
+    at <unknown> (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:22:7594)
+    at <unknown> (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:49813)
+    at e.with (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:25431)
+    at i.with (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:19678)
+    at i.startActiveSpan (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:34644)
+    at e.startActiveSpan (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:35178)
+    at <unknown> (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:49321)[?25h
+    at e.with (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:25431)
+    at i.with (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:19678) {
+  description: "Route / couldn't be rendered statically because it used revalidate: 0 fetch https://raw.githubuserc
+[22;115Hcontent.com/svskaushik/yt-pe-tracker/refs/heads/main/data/channels.min.json /. See more info here: https://nextjs.or
+[22;115Hrg/docs/messages/dynamic-server-error",
+  digest: 'DYNAMIC_SERVER_USAGE'
+}
+Error fetching channels data from GitHub: Error: Dynamic server usage: Route / couldn't be rendered statically beca
+[22;115Hause it used no-store fetch https://raw.githubusercontent.com/svskaushik/yt-pe-tracker/refs/heads/main/data/channels
+[22;115Hs.min.json /. See more info here: https://nextjs.org/docs/messages/dynamic-server-error
+    at p (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:57558)
+    at <unknown> (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:22:11341)
+    at <unknown> (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:49813)
+    at e.with (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:25431)
+    at i.with (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:19678)
+    at i.startActiveSpan (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:34644)
+    at e.startActiveSpan (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:35178)
+    at <unknown> (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:49321)
+    at e.with (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:25431)
+    at i.with (C:\Projects\yt-pe-tracker\web\.next\server\chunks\532.js:1:19678) {
+  description: "Route / couldn't be rendered statically because it used no-store fetch https://raw.githubuserconten
+[22;115Hnt.com/svskaushik/yt-pe-tracker/refs/heads/main/data/channels.min.json /. See more info here: https://nextjs.org/doc
+[22;115Hcs/messages/dynamic-server-error",
+  digest: 'DYNAMIC_SERVER_USAGE'
+}
+ [32m[1m✓[m Generating static pages (10/10)
+[?25l [37m[1m [m Finalizing page optimization  [36m. [37m[1m [m Collecting build traces  [36m.[m[K[115C [37m[1m [m Collecting build traces  [36m..[K[85C[m[K[115C [37m[1m [m Collecting build traces  [36m...[K[84C[m[K[115C [37m[1m [m Collecting build traces  [36m.[K[86C[m[K[115C [37m[1m [m Collecting build traces  [36m..[K[85C[m[K[115C [37m[1m [m Collecting build traces  [36m...[K[84C[m[K[115C [37m[1m [m Collecting build traces  [36m.[K[86C[m[K[115C [37m[1m [m Collecting build traces  [36m..[K[85C[m[K[115C [37m[1m [m Collecting build traces  [36m...[K[84C[m[K[115C [37m[1m [m Collecting build traces  [36m.[K[86C[m[K[115C [37m[1m [m Collecting build traces  [36m..[K[85C[m[K[115C [37m[1m [m Collecting build traces  [36m...[K[84C[m[K[115C [37m[1m [m Collecting build traces  [36m.[K[86C[m[K[115C [37m[1m [m Collecting build traces  [36m..[K[85C[m[K[115C [37m[1m [m Collecting build traces  [36m...[K[84C[m[K[115C [37m[1m [m Collecting build traces  [36m.[K[86C[m[K[115C [37m[1m [m Collecting build traces  [36m..[K[85C[m[K[115C [37m[1m [m Collecting build traces  [36m...[K[84C[m[K[115C [37m[1m [m Collecting build traces  [36m.[K[86C[m[K[115C [32m[1m✓[m Collecting build traces    [?25h
+ [32m[1m✓[m Finalizing page optimization[K
+
+[4mRoute (app)[24m[33X[4m[33CSize[24m  [4mFirst Load JS[24m  [4mRevalidate[24m  [4mExpire[24m[K
+┌ ƒ /                                    2.67 kB[37m[1m[9C114 kB[m[K
+├ ○ /_not-found                            132 B[37m[1m[9C100 kB[m[K
+├ ○ /api/channels                          132 B[37m[1m[9C100 kB[m          1m      1y[K
+├ ƒ /api/posts                             132 B[37m[1m[9C100 kB[m[K
+├ ƒ /api/webhooks/clerk                    132 B[37m[1m[9C100 kB[m[K
+├ ○ /dashboard                              2 kB[37m[1m[9C168 kB[m[K
+├ ƒ /firm/[pe_firm]                        162 B[37m[1m[9C104 kB[m[K
+├ ○ /posts                               20.2 kB[37m[1m[9C173 kB[m[K
 ├ ƒ /sign-in/[[...sign-in]]                338 B[37m[1m[9C134 kB[m[K
-└ ƒ /sign-up/[[...sign-up]]                338 B[37m[1m[9C134 kB[m[K
+├ ƒ /sign-up/[[...sign-up]]                338 B[37m[1m[9C134 kB[m[K
+└ ○ /submit                                161 B[37m[1m[9C104 kB[m[K
 + First Load JS shared by all[37m[1m[13C100 kB[m[K
   ├ chunks/0a02d908-2d14fabe6a258a70.js  54.1 kB
   ├ chunks/900-35c63ef20e6565d4.js       44.1 kB
@@ -36,19 +74,14 @@
 > web@1.0.0 prisma:generate C:\Projects\yt-pe-tracker\web
 > npx prisma generate
 
-]0;npm]0;npm exec prisma generate⠙[K[K⠹⠸[K⠼[K⠴[K⠦[K⠧[K⠇[K⠏[K⠋[K[K⠙⠹[K⠸[K⠼[K⠴[K⠦[K⠧[K⠇[K⠏[K⠋[K⠙[K⠹[K⠸[K⠼[K⠴[K⠦[K⠧[K⠇[K⠏[K⠋[K⠙[K⠹[K⠸[K⠼[K⠴[K⠦[K⠧[K⠇[K⠏[K⠋[K⠙[K⠹[K⠸[K⠼[K⠴[K⠦[K⠧[K⠇[K⠏[K[K⠋⠙[K⠹[K⠸[K[K[2mPrisma schema loaded from prisma\schema.prisma[22m
+]0;npm]0;npm exec prisma generate⠙[K⠹[K⠸[K⠼[K⠴[K⠦[K⠧[K⠇[K⠏[K⠋[K⠙[K⠹[K⠸[K⠼[K⠴[K⠦[K⠧[K⠇[K⠏[K⠋[K⠙[K⠹[K⠸[K⠼[K⠴[K⠦[K⠧[K⠇[K⠏[K⠋[K⠙[K⠹[K⠸[K⠼[K[K⠴⠦[K⠧[K⠇[K⠏[K⠋[K⠙[K⠹[K⠸[K⠼[K⠴[K⠦[K⠧[K⠇[K⠏[K⠋[K⠙[K⠹[K⠸[K[K[2mPrisma schema loaded from prisma\schema.prisma[22m
 
-✔ Generated [1mPrisma Client[22m (v6.12.0)[2m to .\..\node_modules\.pnpm\@prisma+client@6.12.0_pri[22m
-[2m[22;88Hism_852c2f508fa5d5c04099a9cee124d4df\node_modules\@prisma\client[22m in 42ms[K
+✔ Generated [1mPrisma Client[22m (v6.12.0)[2m to .\..\node_modules\.pnpm\@prisma+client@6.12.0_prism_852c2f508fa5d5c04099a9ce[22m
+[2m[22;115Hee124d4df\node_modules\@prisma\client[22m in 43ms[K
 
 Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
 
-Tip: Need your database queries to be 1000x faster? Accelerate offers you that and more:
-[22;88H: https://pris.ly/tip-2-accelerate
+Tip: Interested in query caching in just a few lines of code? Try Accelerate today! https://pris.ly/tip-3-accelerat
+[22;115Hte
 
-[1mnpm[22m [96mnotice[K[m
-[1mnpm[22m [96mnotice [mNew [31mmajor [mversion of npm available! [31m10.9.2 [m-> [34m11.5.1[K[m
-[1mnpm[22m [96mnotice [mChangelog: [34mhttps://github.com/npm/cli/releases/tag/v11.5.1[K[m
-[1mnpm[22m [96mnotice [mTo update run: [4mnpm install -g npm@11.5.1[24m[K
-[1mnpm[22m [96mnotice[K[m
-[?9001l[?1004l
+[K[?9001l[?1004l

@@ -1,7 +1,13 @@
 import * as React from 'react';
 import Link from 'next/link';
-import { ChannelData, formatSubscriberCount, formatDealValue, getYouTubeURL, getConfidenceLevel } from '@/lib/getChannels';
-import { ConfidenceBadge } from '@/components/ui/confidence-badge';
+import {
+  formatSubscriberCount,
+  formatDealValue,
+  getYouTubeURL,
+  getConfidenceLevel,
+  type ChannelData
+} from '../lib/channelData';
+import { ConfidenceBadge } from './ui/confidence-badge';
 
 interface ChannelCardProps {
   channel: ChannelData;

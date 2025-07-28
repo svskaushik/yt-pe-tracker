@@ -1,6 +1,5 @@
 'use client';
 
-import { SignInButton, SignOutButton, useUser } from '@clerk/nextjs';
 import { Github, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -9,7 +8,6 @@ import ThemeToggle from './ThemeToggle';
 
 export default function MainNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { isSignedIn, user } = useUser();
 
   const handleToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -20,51 +18,31 @@ export default function MainNavbar() {
       <div className="container flex h-16 items-center justify-between px-4 sm:px-6 max-w-full">
         <Link href="/" className="flex items-center space-x-2">
           <span className="text-xl sm:text-2xl font-bold font-poppins bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
-            NextBoiler
+            YouTube PE Tracker
           </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
           <Link
-            href="/posts"
+            href="/"
             className="text-sm font-medium text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200"
           >
-            Posts
+            Home
           </Link>
-          {isSignedIn && (
-            <Link
-              href="/dashboard"
-              className="text-sm font-medium text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200"
-            >
-              Dashboard
-            </Link>
-          )}
           <Link
-            href="https://github.com/AnwarHossainSR/nextjs-15-template"
+            href="/submit"
+            className="text-sm font-medium text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200"
+          >
+            Submit Channel
+          </Link>
+          <Link
+            href="https://github.com/yourusername/yt-pe-tracker"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200"
           >
             <Github className="h-5 w-5" />
           </Link>
-          {isSignedIn ? (
-            <>
-              <span className="text-sm font-medium text-[var(--foreground)]">
-                {user?.firstName || user?.emailAddresses[0].emailAddress}
-              </span>
-              <SignOutButton>
-                <button className="text-sm font-medium text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200">
-                  Sign Out
-                </button>
-              </SignOutButton>
-            </>
-          ) : (
-            <SignInButton mode="modal">
-              <button className="text-sm font-medium text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200">
-                Sign In
-              </button>
-            </SignInButton>
-          )}
           <ThemeToggle />
         </nav>
 
@@ -84,24 +62,22 @@ export default function MainNavbar() {
           <div className="fixed inset-x-0 top-16 z-50 bg-[var(--background)] border-b border-[var(--border)] shadow-lg md:hidden animate-in slide-in-from-top duration-300 max-w-full">
             <div className="container py-6 flex flex-col space-y-4 px-4 sm:px-6 max-w-full">
               <Link
-                href="/posts"
+                href="/"
                 className="text-sm font-medium text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200"
                 onClick={handleToggle}
               >
-                Posts
+                Home
               </Link>
-              {isSignedIn && (
-                <Link
-                  href="/dashboard"
-                  className="text-sm font-medium text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200"
-                  onClick={handleToggle}
-                >
-                  Dashboard
-                </Link>
-              )}
+              <Link
+                href="/submit"
+                className="text-sm font-medium text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200"
+                onClick={handleToggle}
+              >
+                Submit Channel
+              </Link>
               <div className="flex items-center justify-between">
                 <Link
-                  href="https://github.com/AnwarHossainSR/nextjs-15-template"
+                  href="https://github.com/yourusername/yt-pe-tracker"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200"
@@ -109,24 +85,6 @@ export default function MainNavbar() {
                 >
                   <Github className="h-5 w-5" />
                 </Link>
-                {isSignedIn ? (
-                  <>
-                    <span className="text-sm font-medium text-[var(--foreground)]">
-                      {user?.firstName || user?.emailAddresses[0].emailAddress}
-                    </span>
-                    <SignOutButton>
-                      <button className="text-sm font-medium text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200">
-                        Sign Out
-                      </button>
-                    </SignOutButton>
-                  </>
-                ) : (
-                  <SignInButton mode="modal">
-                    <button className="text-sm font-medium text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200">
-                      Sign In
-                    </button>
-                  </SignInButton>
-                )}
                 <ThemeToggle />
               </div>
             </div>

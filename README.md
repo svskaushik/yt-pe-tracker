@@ -173,13 +173,13 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 | Channel | Subscribers | PE Firm | Type | Deal Value | Date | Status | Source |
 |---------|-------------|---------|------|------------|------|--------|--------|
-| **MrBeast**<br/><small>@MrBeast</small> | 200,000,000 | Chernin Group | Minority Stake | $100.0M | Jan 19, 2022 | ✅ Confirmed | [📰](https://variety.com/2022/digital/news/mrbeast-funding-chernin-group-1235157503/ "View Source") |
-| **Marques Brownlee**<br/><small>@MKBHD</small> | 18,500,000 | Vox Media | Partnership | - | Nov 14, 2021 | ✅ Confirmed | [📰](https://techcrunch.com/2021/11/15/vox-media-mkbhd/ "View Source") |
-| **TED**<br/><small>@TED</small> | 23,000,000 | TED Media Group | Full Acquisition | - | Feb 29, 2020 | ✅ Confirmed | [📰](https://blog.ted.com/ted-launches-new-media-initiatives/ "View Source") |
-| **Jacksepticeye**<br/><small>@jacksepticeye</small> | 29,000,000 | Night Media | Partnership | - | Aug 9, 2019 | ✅ Confirmed | [📰](https://www.tubefilter.com/2019/08/13/night-media-signs-jacksepticeye/ "View Source") |
-| **PewDiePie**<br/><small>@PewDiePie</small> | 111,000,000 | Maker Studios | Partnership | - | Dec 2, 2012 | ✅ Confirmed | [📰](https://variety.com/2012/digital/news/pewdiepie-maker-studios-1118063647/ "View Source") |
+| **MrBeast**<br/><small>@MrBeast</small> | 252,000,000 | Night Capital (Ch... | Investment Partnership | $100.0M | Sep 12, 2022 | ✅ Confirmed | [📰](https://variety.com/2022/digital/news/tcg-night-inc-investment-firm-mrbeast-1235371311/ "View Source") |
+| **Marques Brownlee**<br/><small>@MKBHD</small> | 18,500,000 | Vox Media | Partnership | - | Aug 12, 2021 | ✅ Confirmed | [📰](https://www.tubefilter.com/2021/08/13/marques-brownlee-waveform-podcast-vox-media-podcast-network/ "View Source") |
+| **Jacksepticeye**<br/><small>@jacksepticeye</small> | 31,000,000 | Studio71 | Partnership | - | Jul 7, 2019 | ✅ Confirmed | [📰](https://variety.com/2019/digital/news/studio71-jacksepticeye-joey-graceffa-1203259666/ "View Source") |
+| **PewDiePie**<br/><small>@PewDiePie</small> | 111,000,000 | Maker Studios (Di... | Partnership | - | Dec 31, 2011 | ✅ Confirmed | [📰](https://web.archive.org/web/20160117224034/http:/variety.com/2016/digital/news/pewdiepie-revelmode-network-1201678900/ "View Source") |
+| **TED**<br/><small>@TED</small> | 23,000,000 | Independent Nonpr... | Unknown | - | Unknown | corrected | [📰](https://www.yahoo.com/news/ted-talks-founder-seeks-owner-120852952.html "View Source") |
 
-<small><i>Last updated: July 26, 2025 at 06:25 AM UTC</i></small>
+<small><i>Last updated: July 28, 2025 at 06:46 AM UTC</i></small>
 <small><i>Total channels tracked: 5</i></small>
 
 <!--data-end-->

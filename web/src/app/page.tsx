@@ -1,164 +1,112 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable import/no-extraneous-dependencies */
+import { Suspense } from 'react';
+import { getChannelsServer, getPEFirmsServer } from '../lib/channelData';
+import { ClientChannelGrid } from '../components/ClientChannelGrid';
 
-'use client';
+export const revalidate = 60; // Revalidate every 60 seconds
 
-import { motion } from 'framer-motion';
-import { ArrowRight, Code, Rocket, ShieldCheck, Zap } from 'lucide-react';
-import Link from 'next/link';
+export default async function Home() {
+  const channels = await getChannelsServer();
+  const peFirms = await getPEFirmsServer();
 
-export default function Home() {
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  // Calculate stats
+  const stats = {
+    totalChannels: channels.length,
+    confirmedDeals: channels.filter((c) => c.status === 'confirmed').length,
+    totalFirms: peFirms.length,
+    totalSubscribers: channels.reduce((sum, c) => sum + (c.subscriber_count || 0), 0),
   };
 
   return (
-    <div className="flex flex-col items-center w-full overflow-hidden">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <motion.section
-        className="w-full py-12 sm:py-16 md:py-24 lg:py-32 bg-[var(--background)] relative overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/[0.1] to-[var(--accent)]/[0.1] pointer-events-none" />
-        <div className="container px-4 sm:px-6 relative z-10 max-w-full">
-          <motion.div
-            className="flex flex-col items-center space-y-6 text-center"
-            {...fadeIn}
-          >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter font-poppins bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
-              Next.js 15 Boilerplate
+      <section className="relative bg-gradient-to-br from-primary/10 to-accent/10 py-16 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
+              YouTube <span className="text-primary">PE Tracker</span>
             </h1>
-            <p className="mx-auto max-w-[600px] text-[var(--muted-foreground)] text-base sm:text-lg px-4">
-              A production-ready starter template with cutting-edge tools and
-              best practices for modern web development.
+            <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Community-driven database tracking private equity acquisitions and investments in YouTube channels
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4">
-              <Link
-                href="/docs"
-                className="inline-flex h-12 items-center justify-center rounded-full bg-[var(--primary)] px-6 text-sm font-semibold text-[var(--primary-foreground)] shadow-lg hover:bg-[var(--primary)]/[0.9] transition-all duration-300 hover:scale-105 w-full sm:w-auto"
-              >
-                Get Started
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link
-                href="https://github.com/AnwarHossainSR/nextjs-15-template"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-12 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--card)] px-6 text-sm font-semibold text-[var(--foreground)] shadow-sm hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)] transition-all duration-300 hover:scale-105 w-full sm:w-auto"
-              >
-                View on GitHub
-                <Code className="ml-2 h-5 w-5" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Features Section */}
-      <motion.section
-        className="w-full py-12 sm:py-16 md:py-24 bg-[var(--card)]"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="container px-4 sm:px-6 max-w-full">
-          <motion.div
-            className="flex flex-col items-center justify-center space-y-6 text-center"
-            {...fadeIn}
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-poppins text-[var(--foreground)]">
-              Why Choose NextBoiler?
-            </h2>
-            <p className="mx-auto max-w-[600px] text-[var(--muted-foreground)] text-base sm:text-lg px-4">
-              Everything you need to build scalable, high-performance web
-              applications.
-            </p>
-          </motion.div>
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3 px-4">
-            {[
-              {
-                icon: Zap,
-                title: 'Blazing Performance',
-                description:
-                  'Optimized with Next.js 15 for lightning-fast page loads and seamless user experiences.',
-              },
-              {
-                icon: ShieldCheck,
-                title: 'Best Practices',
-                description:
-                  'TypeScript, ESLint, Prettier, and Husky ensure robust, maintainable codebases.',
-              },
-              {
-                icon: Rocket,
-                title: 'Production Ready',
-                description:
-                  'SEO-optimized, responsive, and accessible, ready for enterprise-grade projects.',
-              },
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                className="relative flex flex-col items-center space-y-4 rounded-xl bg-[var(--background)] p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-[var(--border)]"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-              >
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent)] p-3 shadow-md">
-                  <feature.icon className="h-6 w-6 text-[var(--accent-foreground)]" />
+            
+            {/* Quick Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+              <div className="bg-card/80 backdrop-blur-sm rounded-lg p-4 border border-border">
+                <div className="text-2xl font-bold text-foreground">{stats.totalChannels}</div>
+                <div className="text-sm text-muted-foreground">Tracked Channels</div>
+              </div>
+              <div className="bg-card/80 backdrop-blur-sm rounded-lg p-4 border border-border">
+                <div className="text-2xl font-bold text-foreground">{stats.confirmedDeals}</div>
+                <div className="text-sm text-muted-foreground">Confirmed Deals</div>
+              </div>
+              <div className="bg-card/80 backdrop-blur-sm rounded-lg p-4 border border-border">
+                <div className="text-2xl font-bold text-foreground">{stats.totalFirms}</div>
+                <div className="text-sm text-muted-foreground">PE Firms</div>
+              </div>
+              <div className="bg-card/80 backdrop-blur-sm rounded-lg p-4 border border-border">
+                <div className="text-2xl font-bold text-foreground">
+                  {stats.totalSubscribers > 1000000 
+                    ? `${(stats.totalSubscribers / 1000000).toFixed(1)}M`
+                    : `${Math.round(stats.totalSubscribers / 1000)}K`
+                  }
                 </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-[var(--foreground)] pt-8">
-                  {feature.title}
-                </h3>
-                <p className="text-center text-[var(--muted-foreground)] text-sm sm:text-base">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
+                <div className="text-sm text-muted-foreground">Total Subscribers</div>
+              </div>
+            </div>
           </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* CTA Section */}
-      <motion.section
-        className="w-full py-12 sm:py-16 md:py-24 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] text-[var(--primary-foreground)]"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="container px-4 sm:px-6 max-w-full">
-          <motion.div
-            className="flex flex-col items-center space-y-6 text-center"
-            {...fadeIn}
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter font-poppins">
-              Start Building Today
-            </h2>
-            <p className="mx-auto max-w-[600px] text-[var(--primary-foreground)]/[0.9] text-base sm:text-lg px-4">
-              Clone the repository and launch your next project with confidence.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4">
-              <pre className="bg-[var(--card)]/[0.95] px-4 py-3 rounded-xl font-mono text-xs sm:text-sm text-[var(--foreground)] shadow-inner w-full overflow-x-auto max-w-full">
-                <code>
-                  git clone
-                  https://github.com/AnwarHossainSR/nextjs-15-template.git
-                </code>
-              </pre>
+      {/* Main Content */}
+      <section className="py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Search, Filter and Channels Grid */}
+          <Suspense fallback={
+            <div className="space-y-8">
+              <div className="bg-card rounded-lg border border-border p-6">
+                <div className="animate-pulse">
+                  <div className="h-10 bg-muted rounded mb-4"></div>
+                  <div className="flex gap-2">
+                    <div className="h-8 bg-muted rounded w-20"></div>
+                    <div className="h-8 bg-muted rounded w-20"></div>
+                    <div className="h-8 bg-muted rounded w-20"></div>
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div key={i} className="bg-card rounded-lg border border-border p-6 animate-pulse">
+                    <div className="h-6 bg-muted rounded mb-4"></div>
+                    <div className="h-4 bg-muted rounded mb-2"></div>
+                    <div className="h-4 bg-muted rounded w-3/4"></div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <Link
-              href="/docs"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-[var(--accent)] px-6 text-sm font-semibold text-[var(--accent-foreground)] shadow-lg hover:bg-[var(--accent)]/[0.9] transition-all duration-300 hover:scale-105 w-full sm:w-auto mx-4"
-            >
-              Explore Documentation
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </motion.div>
+          }>
+            <ClientChannelGrid initialChannels={channels} peFirms={peFirms} />
+          </Suspense>
+
+          {/* Call to Action */}
+          <div className="mt-16 text-center">
+            <div className="bg-card rounded-lg border border-border p-8">
+              <h2 className="text-2xl font-bold text-foreground mb-4">
+                Know of a PE acquisition we're missing?
+              </h2>
+              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                Help us keep this database accurate and up-to-date by submitting new acquisitions or corrections.
+              </p>
+              <a
+                href="/submit"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+              >
+                <span>🏢</span>
+                Submit a Channel
+              </a>
+            </div>
+          </div>
         </div>
-      </motion.section>
+      </section>
     </div>
   );
 }

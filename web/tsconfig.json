@@ -19,10 +19,11 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["./src/*"],
-      "@/public/*": ["./public/*"]
+      "@/*": ["*"],
+      "@/public/*": ["../public/*"],
+      "@ui/*": ["../../extension/packages/ui/*"]
     },
     "types": ["node"]
   },
