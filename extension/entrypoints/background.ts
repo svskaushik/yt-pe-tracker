@@ -11,7 +11,10 @@ export default defineBackground(() => {
   async function fetchAndStoreChannelData() {
     try {
       console.log('Fetching channel data from GitHub...');
-      const response = await fetch(CHANNELS_DATA_URL);
+      
+      // Add cache-busting parameter to avoid CDN caching issues
+      const cacheBustingUrl = `${CHANNELS_DATA_URL}?t=${Date.now()}`;
+      const response = await fetch(cacheBustingUrl);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
