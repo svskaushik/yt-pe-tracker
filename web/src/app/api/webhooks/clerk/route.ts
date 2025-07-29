@@ -1,3 +1,4 @@
+/* global Request, process, console */
 // app/api/webhooks/clerk/route.ts
 import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
@@ -9,10 +10,7 @@ export async function POST(req: Request) {
   const { CLERK_WEBHOOK_SECRET } = process.env;
 
   if (!CLERK_WEBHOOK_SECRET) {
-    return NextResponse.json(
-      { error: 'Webhook secret not configured' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Webhook secret not configured' }, { status: 500 });
   }
 
   const headerPayload: any = headers();
@@ -21,17 +19,14 @@ export async function POST(req: Request) {
   const svix_signature = headerPayload.get('svix-signature');
 
   if (!svix_id || !svix_timestamp || !svix_signature) {
-    return NextResponse.json(
-      { error: 'Missing svix headers' },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: 'Missing svix headers' }, { status: 400 });
   }
 
   const payload = await req.json();
   const body = JSON.stringify(payload);
 
   const wh = new Webhook(CLERK_WEBHOOK_SECRET);
-  let evt:any;
+  let evt: any;
 
   try {
     evt = wh.verify(body, {
@@ -41,10 +36,7 @@ export async function POST(req: Request) {
     });
   } catch (err) {
     console.error('Webhook verification failed:', err);
-    return NextResponse.json(
-      { error: 'Webhook verification failed' },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: 'Webhook verification failed' }, { status: 400 });
   }
 
   const { type, data } = evt;
@@ -54,27 +46,19 @@ export async function POST(req: Request) {
       await prisma.user.upsert({
         where: { clerkId: data.id },
         update: {
-          name: data.first_name
-            ? `${data.first_name} ${data.last_name || ''}`.trim()
-            : null,
+          name: data.first_name ? `${data.first_name} ${data.last_name || ''}`.trim() : null,
           email: data.email_addresses[0].email_address,
           emailVerified:
-            data.email_addresses[0].verification?.status === 'verified'
-              ? new Date()
-              : null,
+            data.email_addresses[0].verification?.status === 'verified' ? new Date() : null,
           image: data.image_url || null,
           updatedAt: new Date(),
         },
         create: {
           clerkId: data.id,
-          name: data.first_name
-            ? `${data.first_name} ${data.last_name || ''}`.trim()
-            : null,
+          name: data.first_name ? `${data.first_name} ${data.last_name || ''}`.trim() : null,
           email: data.email_addresses[0].email_address,
           emailVerified:
-            data.email_addresses[0].verification?.status === 'verified'
-              ? new Date()
-              : null,
+            data.email_addresses[0].verification?.status === 'verified' ? new Date() : null,
           image: data.image_url || null,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -83,10 +67,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: true });
     } catch (error) {
       console.error('Prisma error:', error);
-      return NextResponse.json(
-        { error: 'Failed to process user data' },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: 'Failed to process user data' }, { status: 500 });
     }
   }
 

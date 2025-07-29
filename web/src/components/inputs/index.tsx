@@ -1,10 +1,7 @@
+import React from 'react';
 'use client';
 
-import type {
-  FieldErrors,
-  FieldValues,
-  UseFormRegister,
-} from 'react-hook-form';
+import type { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 import { BiDollar } from 'react-icons/bi';
 
 interface InputProps {
@@ -31,16 +28,16 @@ const Input: React.FC<InputProps> = ({
   placeholder,
 }) => {
   return (
-    <div className="w-full relative">
+    <div className='w-full relative'>
       {formatPrice && (
         <BiDollar
           size={24}
-          className="
-            text-neutral-700
+          className='
             absolute
             top-5
             left-2
-          "
+            text-neutral-700 dark:text-gray-300
+          '
         />
       )}
       <input
@@ -54,9 +51,9 @@ const Input: React.FC<InputProps> = ({
           peer
           w-full
           p-4
-          pt-6 
-          font-light 
-          bg-white 
+          pt-6
+          font-light
+          bg-background dark:bg-[#23262F]
           border-2
           rounded-md
           outline-none
@@ -64,27 +61,27 @@ const Input: React.FC<InputProps> = ({
           disabled:opacity-70
           disabled:cursor-not-allowed
           ${formatPrice ? 'pl-9' : 'pl-4'}
-          ${errors[id] ? 'border-rose-500' : 'border-neutral-300'}
-          ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black'}
-          text-neutral-800
+          ${errors[id] ? 'border-rose-500' : 'border-neutral-300 dark:border-gray-600'}
+          ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black dark:focus:border-white'}
+          text-neutral-800 dark:text-gray-100
         `}
       />
       <label
         className={`
-          absolute 
+          absolute
           text-md
-          duration-150 
-          transform 
-          -translate-y-3 
-          top-5 
-          z-10 
-          origin-[0] 
+          duration-150
+          transform
+          -translate-y-3
+          top-5
+          z-10
+          origin-[0]
           ${formatPrice ? 'left-9' : 'left-4'}
-          peer-placeholder-shown:scale-100 
-          peer-placeholder-shown:translate-y-0 
+          peer-placeholder-shown:scale-100
+          peer-placeholder-shown:translate-y-0
           peer-focus:scale-75
           peer-focus:-translate-y-4
-          ${errors[id] ? 'text-rose-500' : 'text-zinc-400'}
+          ${errors[id] ? 'text-rose-500' : 'text-zinc-400 dark:text-gray-400'}
         `}
       >
         {label}
@@ -94,4 +91,3 @@ const Input: React.FC<InputProps> = ({
 };
 
 export { Input };
-

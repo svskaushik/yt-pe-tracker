@@ -1,11 +1,10 @@
+/* global HTMLDivElement */
+import React from 'react';
 // @ts-nocheck
 import { cn } from '../../lib/utils';
 import { motion } from 'framer-motion';
 
-function Skeleton({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <motion.div
       initial={{ opacity: 0.5 }}

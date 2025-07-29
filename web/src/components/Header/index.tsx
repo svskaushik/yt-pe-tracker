@@ -9,12 +9,12 @@ import type { CurrentUserProps } from '@/types';
 
 const Header: FC<CurrentUserProps> = () => {
   return (
-    <header className="px-8 py-8 flex justify-between bg-gray-900 text-violet-50">
-      <Link href="/">
+    <header className="px-8 py-8 flex justify-between bg-background text-foreground dark:bg-[#181A20] dark:text-white">
+      <Link href='/'>
         <span>Home</span>
       </Link>
       <button
-        className="bg-violet-50 text-gray-900 px-4 py-2 rounded-md"
+        className="bg-foreground text-background dark:bg-white dark:text-[#181A20] px-4 py-2 rounded-md transition-colors"
         type="button"
       >
         Login

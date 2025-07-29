@@ -1,15 +1,11 @@
-@import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Completely scoped CSS for YouTube PE tracker to prevent contamination */
 
-/* Custom styles for YouTube PE tracker */
-.yt-pe-badge {
+.yt-pe-extension.yt-pe-badge {
   font-family: 'YouTube Sans', 'Roboto', sans-serif;
   z-index: 9999;
 }
 
-.yt-pe-badge-animate {
+.yt-pe-extension.yt-pe-badge-animate {
   animation: fadeInUp 0.3s ease-out;
 }
 
@@ -22,4 +18,123 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+ .yt-pe-extension.yt-pe-badge-modern {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'YouTube Sans', 'Roboto', sans-serif;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  border-radius: 999px;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  z-index: 9999;
+  border: 1px solid;
+}
+
+ .yt-pe-extension.yt-pe-badge-micro {
+  padding: 0px 8px;
+  font-size: 10px;
+  height: 16px;
+  margin-left: 4px;
+}
+
+ .yt-pe-extension.yt-pe-badge-small {
+  padding: 0px 10px;
+  font-size: 11px;
+  height: 18px;
+  margin-left: 6px;
+}
+
+ .yt-pe-extension.yt-pe-badge-medium {
+  padding: 1px 12px;
+  font-size: 12px;
+  height: 20px;
+  margin-left: 8px;
+}
+
+ .yt-pe-extension.yt-pe-badge-large {
+  padding: 1px 16px;
+  font-size: 13px;
+  height: 24px;
+  margin-left: 10px;
+}
+
+.yt-pe-extension.yt-pe-badge-light {
+  background-color: #f1f3f4;
+  border-color: #dadce0;
+  color: #3c4043;
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.1);
+}
+
+.yt-pe-extension.yt-pe-badge-light:hover {
+  background-color: #e8eaed;
+  box-shadow: 0 1px 3px rgba(60, 64, 67, 0.15);
+}
+
+.yt-pe-extension.yt-pe-badge-dark {
+  background-color: #313335;
+  border-color: #5f6368;
+  color: #e8eaed;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.yt-pe-extension.yt-pe-badge-dark:hover {
+  background-color: #3c4043;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.yt-pe-extension.yt-pe-badge-accent {
+  background-color: #1976d2;
+  border-color: #1976d2;
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgba(25, 118, 210, 0.3);
+}
+
+.yt-pe-extension.yt-pe-badge-accent:hover {
+  background-color: #1565c0;
+  border-color: #1565c0;
+  box-shadow: 0 1px 3px rgba(25, 118, 210, 0.4);
+}
+
+.yt-pe-extension.yt-pe-tooltip {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.92);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.3;
+  max-width: 280px;
+  text-align: left;
+  white-space: nowrap;
+  z-index: 2147483647;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  font-family: 'YouTube Sans', 'Roboto', sans-serif;
+  transform: translateX(-50%);
+}
+
+.yt-pe-extension.yt-pe-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.92);
+}
+
+/* Tooltip visibility handled via JavaScript */
+/* .yt-pe-extension.yt-pe-badge-modern:hover.yt-pe-tooltip { opacity: 1; } */
+
+.yt-pe-extension.yt-pe-badge-modern {
+  vertical-align: middle;
+  flex-shrink: 0;
 }

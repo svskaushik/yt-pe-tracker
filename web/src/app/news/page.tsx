@@ -1,14 +1,14 @@
 "use client";
 import { useEffect, useState } from 'react';
 
-type NewsArticle = {
+interface NewsArticle {
   url: string;
   type: 'primary' | 'secondary';
   channel_name: string;
   channel_handle: string;
   pe_firm: string;
   headline: string;
-};
+}
 
 export default function NewsPage() {
   const [articles, setArticles] = useState<NewsArticle[]>([]);
@@ -18,11 +18,15 @@ export default function NewsPage() {
   useEffect(() => {
     fetch('/api/news')
       .then(res => res.json())
-      .then(data => {
-        setArticles(data);
+      .then((data: any) => {
+        if (Array.isArray(data)) {
+          setArticles(data);
+        } else {
+          setError(data.error || 'Unexpected response');
+        }
         setLoading(false);
       })
-      .catch(err => {
+      .catch(() => {
         setError('Failed to load news feed');
         setLoading(false);
       });
@@ -32,7 +36,7 @@ export default function NewsPage() {
     <div className='bg-[var(--background)] min-h-screen'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 py-12'>
         <h1 className='text-4xl font-bold text-[var(--foreground)] mb-8 text-center'>
-          News Feed: Source Articles for Channel Acquisitions
+          News Feed (Beta)
         </h1>
         {loading ? (
           <div className='text-center text-lg text-[var(--muted-foreground)]'>Loading...</div>

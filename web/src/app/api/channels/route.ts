@@ -1,3 +1,4 @@
+/* global process */
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { NextResponse } from 'next/server';
@@ -8,7 +9,7 @@ export async function GET() {
     const dataPath = join(process.cwd(), '..', 'data', 'channels.min.json');
     const jsonData = readFileSync(dataPath, 'utf-8');
     const data = JSON.parse(jsonData);
-    
+
     return NextResponse.json(data, {
       headers: {
         'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
@@ -17,7 +18,7 @@ export async function GET() {
     });
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    
+
     // Return empty data structure as fallback
     const fallbackData = {
       meta: {
@@ -25,16 +26,16 @@ export async function GET() {
         version: '1.0.0',
         total_channels: 0,
         description: 'YouTube Channel Private Equity Ownership Database',
-        error: 'Failed to load data: ' + errorMessage
+        error: 'Failed to load data: ' + errorMessage,
       },
-      channels: []
+      channels: [],
     };
-    
-    return NextResponse.json(fallbackData, { 
+
+    return NextResponse.json(fallbackData, {
       status: 200, // Return 200 to avoid client errors, but include error in meta
       headers: {
         'Content-Type': 'application/json',
-      }
+      },
     });
   }
 }

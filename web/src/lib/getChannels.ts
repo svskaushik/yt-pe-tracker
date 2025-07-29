@@ -1,3 +1,4 @@
+/* global process, fetch */
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
@@ -9,7 +10,13 @@ export interface ChannelData {
   subscriber_count: number | null;
   pe_firm: string;
   acquisition_date: string;
-  acquisition_type: 'full_acquisition' | 'majority_stake' | 'minority_stake' | 'partnership' | 'investment' | 'unknown';
+  acquisition_type:
+    | 'full_acquisition'
+    | 'majority_stake'
+    | 'minority_stake'
+    | 'partnership'
+    | 'investment'
+    | 'unknown';
   deal_value: number | null;
   deal_value_currency: string;
   status: 'confirmed' | 'rumored' | 'pending' | 'withdrawn' | 'denied';
@@ -48,9 +55,9 @@ export async function getChannelsServer(): Promise<ChannelsData> {
         generated_at: new Date().toISOString(),
         version: '1.0.0',
         total_channels: 0,
-        description: 'YouTube Channel Private Equity Ownership Database'
+        description: 'YouTube Channel Private Equity Ownership Database',
       },
-      channels: []
+      channels: [],
     };
   }
 }
@@ -62,11 +69,11 @@ export async function getChannelsServer(): Promise<ChannelsData> {
 export async function getChannelsClient(): Promise<ChannelsData> {
   try {
     const response = await fetch('/api/channels');
-    
+
     if (!response.ok) {
       throw new Error(`Failed to fetch channels: ${response.status}`);
     }
-    
+
     const data: ChannelsData = await response.json();
     return data;
   } catch (error) {
@@ -76,9 +83,9 @@ export async function getChannelsClient(): Promise<ChannelsData> {
         generated_at: new Date().toISOString(),
         version: '1.0.0',
         total_channels: 0,
-        description: 'YouTube Channel Private Equity Ownership Database'
+        description: 'YouTube Channel Private Equity Ownership Database',
       },
-      channels: []
+      channels: [],
     };
   }
 }
@@ -108,12 +115,13 @@ export async function getPEFirmsServer(): Promise<string[]> {
 export async function searchChannelsServer(query: string): Promise<ChannelData[]> {
   const data = await getChannelsServer();
   const searchTerm = query.toLowerCase();
-  
-  return data.channels.filter((channel: ChannelData) => 
-    channel.channel_name.toLowerCase().includes(searchTerm) ||
-    channel.channel_handle?.toLowerCase().includes(searchTerm) ||
-    channel.pe_firm.toLowerCase().includes(searchTerm) ||
-    channel.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm))
+
+  return data.channels.filter(
+    (channel: ChannelData) =>
+      channel.channel_name.toLowerCase().includes(searchTerm) ||
+      channel.channel_handle?.toLowerCase().includes(searchTerm) ||
+      channel.pe_firm.toLowerCase().includes(searchTerm) ||
+      channel.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm))
   );
 }
 
@@ -122,13 +130,13 @@ export async function searchChannelsServer(query: string): Promise<ChannelData[]
  */
 export function formatSubscriberCount(count: number | null): string {
   if (!count) return 'Unknown';
-  
+
   if (count >= 1000000) {
     return `${(count / 1000000).toFixed(1)}M`;
   } else if (count >= 1000) {
     return `${(count / 1000).toFixed(1)}K`;
   }
-  
+
   return count.toString();
 }
 
@@ -137,20 +145,20 @@ export function formatSubscriberCount(count: number | null): string {
  */
 export function formatDealValue(value: number | null, currency: string = 'USD'): string {
   if (!value) return 'Undisclosed';
-  
+
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: currency,
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-  
+
   if (value >= 1000000000) {
     return formatter.format(value / 1000000000) + 'B';
   } else if (value >= 1000000) {
     return formatter.format(value / 1000000) + 'M';
   }
-  
+
   return formatter.format(value);
 }
 

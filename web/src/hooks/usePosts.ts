@@ -21,11 +21,7 @@ export interface Post {
   commentCount?: number;
 }
 
-export const usePosts = (
-  query: string = '',
-  category?: string,
-  sortBy: string = 'newest'
-) => {
+export const usePosts = (query: string = '', category?: string, sortBy: string = 'newest') => {
   return useFetch(['posts', query, category, sortBy], () =>
     postService.getPosts(query, category, sortBy)
   );

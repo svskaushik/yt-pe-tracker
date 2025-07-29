@@ -11,7 +11,7 @@ export default function ErrorLayout({ children }: ChildrenProps) {
   return (
     <div>
       {children}
-      <Link href="/">Go back to home</Link>
+      <Link href='/'>Go back to home</Link>
     </div>
   );
 }

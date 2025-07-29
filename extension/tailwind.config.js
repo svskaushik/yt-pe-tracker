@@ -20,6 +20,26 @@ module.exports = {
           700: '#b91c1c',
           800: '#991b1b',
           900: '#7f1d1d',
+        },
+        badge: {
+          // Professional blue-gray scheme that fits YouTube's design
+          light: {
+            bg: '#f1f3f4',
+            border: '#dadce0',
+            text: '#3c4043',
+            hover: '#e8eaed',
+          },
+          dark: {
+            bg: '#313335',
+            border: '#5f6368',
+            text: '#e8eaed',
+            hover: '#3c4043',
+          },
+          accent: {
+            bg: '#1976d2',
+            text: '#ffffff',
+            hover: '#1565c0',
+          },
         }
       },
       fontFamily: {

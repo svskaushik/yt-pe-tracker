@@ -13,21 +13,17 @@ export default function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return <div className="h-10 w-10" />;
+    return <div className='h-10 w-10' />;
   }
 
   return (
     <button
-      type="button"
-      className="rounded-full p-2 text-[var(--foreground)] hover:bg-[var(--accent)]/[0.2] hover:text-[var(--accent)] transition-all duration-300 shadow-sm hover:shadow-md"
+      type='button'
+      className='rounded-full p-2 text-[var(--foreground)] hover:bg-[var(--accent)/0.2] hover:text-[var(--accent)] transition-all duration-300 shadow-sm hover:shadow-md'
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      aria-label="Toggle theme"
+      aria-label='Toggle theme'
     >
-      {theme === 'dark' ? (
-        <Sun className="h-5 w-5" />
-      ) : (
-        <Moon className="h-5 w-5" />
-      )}
+      {theme === 'dark' ? <Sun className='h-5 w-5' /> : <Moon className='h-5 w-5' />}
     </button>
   );
 }

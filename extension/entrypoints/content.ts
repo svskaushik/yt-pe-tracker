@@ -109,113 +109,164 @@ let debounceTimer: number | null = null;
 // Badge creation functions
 function createBadgeElement(type: 'small' | 'medium' | 'large' | 'inline', channelData: ChannelData): HTMLElement {
   const badge = document.createElement('div');
-  badge.className = 'yt-pe-badge';
   badge.setAttribute('data-pe-firm', channelData.pe_firm);
   badge.setAttribute('data-channel-id', channelData.channel_id);
   
-  // Detect YouTube theme
-  const isDark = document.documentElement.hasAttribute('dark') || 
-                 document.body.hasAttribute('dark') ||
-                 document.querySelector('[dark]') !== null;
   
-  const baseClasses = 'inline-flex items-center font-medium transition-all duration-200 z-50 pointer-events-auto';
-  const themeClasses = isDark 
-    ? 'bg-orange-600 text-orange-100 border-orange-500 hover:bg-orange-500' 
-    : 'bg-orange-500 text-white border-orange-400 hover:bg-orange-600';
+  // Detect YouTube theme more accurately
+  const isDark = document.documentElement.hasAttribute('dark') || 
+                 document.documentElement.getAttribute('data-darkreader-scheme') === 'dark' ||
+                 document.body.hasAttribute('dark') ||
+                 document.querySelector('[dark]') !== null ||
+                 getComputedStyle(document.body).backgroundColor === 'rgb(15, 15, 15)' ||
+                 window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  // Base classes for modern pill-shaped badge
+  const baseClasses = 'yt-pe-badge-modern';
+  const themeClasses = isDark ? 'yt-pe-badge-dark' : 'yt-pe-badge-light';
+  
+  // Size-specific classes and content
+  let sizeClasses = '';
+  let badgeContent = '';
   
   switch (type) {
+    case 'inline':
+      sizeClasses = 'yt-pe-badge-micro';
+      badgeContent = 'PE';
+      break;
+    
     case 'small':
-      badge.className = `${baseClasses} ${themeClasses} text-xs px-1.5 py-0.5 rounded border text-[10px] leading-tight`;
-      badge.innerHTML = `
-        <span class="font-bold">PE</span>
-      `;
+      sizeClasses = 'yt-pe-badge-small';
+      badgeContent = 'PE';
       break;
     
     case 'medium':
-      badge.className = `${baseClasses} ${themeClasses} text-xs px-2 py-1 rounded-md border`;
-      badge.innerHTML = `
-        <span class="font-bold mr-1">PE</span>
-        <span class="truncate max-w-[100px]">${channelData.pe_firm}</span>
-      `;
+      sizeClasses = 'yt-pe-badge-medium';
+      badgeContent = 'PE';
       break;
     
     case 'large':
-      badge.className = `${baseClasses} ${themeClasses} text-sm px-3 py-1.5 rounded-lg border`;
-      badge.innerHTML = `
-        <div class="flex items-center">
-          <span class="font-bold mr-2">PE-Owned</span>
-          <span class="text-orange-200">${channelData.pe_firm}</span>
-        </div>
-      `;
-      break;
-
-    case 'inline':
-      badge.className = `${baseClasses} ${themeClasses} text-xs px-1 py-0.5 rounded text-[10px] leading-none ml-1`;
-      badge.innerHTML = `
-        <span class="font-bold">PE</span>
-      `;
-      badge.style.fontSize = '10px';
-      badge.style.height = '16px';
-      badge.style.minHeight = '16px';
+      sizeClasses = 'yt-pe-badge-large';
+      badgeContent = 'PE';
       break;
   }
   
-  // Add tooltip with improved styling for legibility
+  // Set class names including scoping class to prevent CSS contamination
+  badge.className = `yt-pe-extension ${baseClasses} ${sizeClasses} ${themeClasses}`;
+  badge.innerHTML = badgeContent;
+  
+  // Create enhanced tooltip with better information hierarchy
   const tooltip = document.createElement('div');
-  tooltip.className = `yt-pe-tooltip absolute text-xs px-3 py-2 rounded-lg z-[99999] opacity-0 pointer-events-none transition-opacity duration-200 whitespace-nowrap`;
-  tooltip.style.bottom = '100%';
-  tooltip.style.left = '50%';
-  tooltip.style.transform = 'translateX(-50%)';
-  tooltip.style.marginBottom = '8px';
-  tooltip.style.boxShadow = '0 4px 16px 0 rgba(0,0,0,0.18), 0 1.5px 4px 0 rgba(0,0,0,0.12)';
-  tooltip.style.borderRadius = '8px';
-  tooltip.style.fontWeight = '500';
-  tooltip.style.maxWidth = '260px';
-  tooltip.style.textAlign = 'left';
-  tooltip.style.wordBreak = 'break-word';
-  tooltip.style.pointerEvents = 'auto';
-  tooltip.style.zIndex = '99999';
-  if (isDark) {
-    tooltip.style.background = 'rgba(30,30,30,0.98)';
-    tooltip.style.color = '#f3f3f3';
-    tooltip.style.border = '1px solid #444';
-  } else {
-    tooltip.style.background = 'rgba(255,255,255,0.98)';
-    tooltip.style.color = '#222';
-    tooltip.style.border = '1px solid #bbb';
-  }
+  tooltip.className = 'yt-pe-extension yt-pe-tooltip';
+  
+  const formatDate = (dateString: string) => {
+    try {
+      return new Date(dateString).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+    } catch {
+      return dateString;
+    }
+  };
+  
+  const formatAcquisitionType = (type: string) => {
+    switch (type) {
+      case 'minority_stake':
+        return 'Minority Stake';
+      case 'majority_stake':
+        return 'Majority Stake';
+      case 'full_acquisition':
+        return 'Full Acquisition';
+      case 'partnership':
+        return 'Partnership';
+      case 'investment':
+        return 'Investment';
+      case 'licensing_deal':
+        return 'Licensing Deal';
+      case 'acquisition':
+        return 'Acquisition';
+      default:
+        return type.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+    }
+  };
+  
+  // Enhanced tooltip content
   tooltip.innerHTML = `
-    <div style="font-weight:600;">${channelData.channel_name}</div>
-    <div>PE Firm: <span style="font-weight:500;">${channelData.pe_firm}</span></div>
-    <div>Acquired: <span style="font-weight:500;">${channelData.acquisition_date}</span></div>
-    <div>Type: <span style="font-weight:500;">${channelData.acquisition_type.replace('_', ' ')}</span></div>
+    <div style="font-weight: 600; margin-bottom: 4px;">${channelData.channel_name}</div>
+    <div style="margin-bottom: 2px;">PE Firm: <span style="font-weight: 500;">${channelData.pe_firm}</span></div>
+    <div style="margin-bottom: 2px;">Since: <span style="font-weight: 500;">${formatDate(channelData.acquisition_date)}</span></div>
+    <div>Type: <span style="font-weight: 500;">${formatAcquisitionType(channelData.acquisition_type)}</span></div>
   `;
 
-  badge.style.position = 'relative';
-  badge.style.zIndex = '99999';
-  badge.appendChild(tooltip);
+  // Append tooltip to document body for proper positioning
+  document.body.appendChild(tooltip);
 
-  // Fix for video page: ensure parent containers allow overflow and pointer events
-  let parent = badge.parentElement;
-  while (parent) {
-    if (parent instanceof HTMLElement) {
-      if (parent.style.overflow === 'hidden') parent.style.overflow = 'visible';
-      if (parent.style.pointerEvents === 'none') parent.style.pointerEvents = 'auto';
+  // Position tooltip function
+  const positionTooltip = () => {
+    const badgeRect = badge.getBoundingClientRect();
+    const tooltipRect = tooltip.getBoundingClientRect();
+    
+    // Calculate position above the badge
+    let left = badgeRect.left + (badgeRect.width / 2);
+    let top = badgeRect.top - tooltipRect.height - 8;
+    
+    // Keep tooltip within viewport bounds
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    
+    // Adjust horizontal position if too far right
+    if (left + tooltipRect.width / 2 > viewportWidth - 10) {
+      left = viewportWidth - tooltipRect.width / 2 - 10;
     }
-    parent = parent.parentElement;
-  }
+    
+    // Adjust horizontal position if too far left
+    if (left - tooltipRect.width / 2 < 10) {
+      left = tooltipRect.width / 2 + 10;
+    }
+    
+    // If tooltip would be above viewport, show below badge instead
+    if (top < 10) {
+      top = badgeRect.bottom + 8;
+    }
+    
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${top}px`;
+  };
 
-  // Show/hide tooltip on hover
-  badge.addEventListener('mouseenter', () => {
+  // Show/hide tooltip handlers
+  const showTooltip = () => {
+    positionTooltip();
     tooltip.style.opacity = '1';
-    tooltip.style.pointerEvents = 'auto';
-  });
-  badge.addEventListener('mouseleave', () => {
+  };
+  
+  const hideTooltip = () => {
     tooltip.style.opacity = '0';
-    tooltip.style.pointerEvents = 'none';
+  };
+  
+  // Add event listeners
+  badge.addEventListener('mouseenter', showTooltip);
+  badge.addEventListener('mouseleave', hideTooltip);
+  
+  // Clean up tooltip when badge is removed
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.removedNodes.forEach((node) => {
+        if (node === badge || (node instanceof Element && node.contains(badge))) {
+          tooltip.remove();
+          observer.disconnect();
+        }
+      });
+    });
   });
   
-  // Click handler for more info (only open if valid, non-placeholder source_url)
+  // Observe the badge's parent for removal
+  if (badge.parentNode) {
+    observer.observe(badge.parentNode, { childList: true, subtree: true });
+  }
+
+  // Click handler for more info
   badge.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -223,7 +274,7 @@ function createBadgeElement(type: 'small' | 'medium' | 'large' | 'inline', chann
     if (url && url !== '#' && !url.includes('techcrunch.com/acquisition-youtube-pe-placeholder')) {
       window.open(url, '_blank');
     } else {
-      // Optionally, open the channel page as a fallback
+      // Fallback: open channel page
       const handle = channelData.channel_handle || channelData.channel_id;
       if (handle) {
         window.open(`https://www.youtube.com/${handle.startsWith('@') ? handle : 'channel/' + handle}`, '_blank');
@@ -633,6 +684,15 @@ function processCurrentPage(): void {
 
 function cleanupBadges(): void {
   badgeElements.forEach(badge => {
+    // Find and remove associated tooltips
+    const tooltips = document.querySelectorAll('.yt-pe-tooltip');
+    tooltips.forEach(tooltip => {
+      if (tooltip.parentNode) {
+        tooltip.parentNode.removeChild(tooltip);
+      }
+    });
+    
+    // Remove the badge itself
     if (badge.parentNode) {
       badge.parentNode.removeChild(badge);
     }
@@ -739,10 +799,22 @@ export default defineContentScript({
     });
 
     window.addEventListener('yt-navigate-finish', () => {
-      setTimeout(() => {
+      // Retry injection multiple times to wait for dynamic header/video owner load
+      let retries = 0;
+      const maxRetries = 5;
+      const retryDelay = 600;
+      const attemptInject = () => {
+        // Clean up any previous badges/tooltips
+        cleanupBadges();
+        processedElements = new WeakSet();
         fixYouTubeLogo();
         processCurrentPage();
-      }, 500);
+        if (retries < maxRetries) {
+          retries++;
+          setTimeout(attemptInject, retryDelay);
+        }
+      };
+      attemptInject();
     });
 
     // Initial processing

@@ -21,8 +21,7 @@ export const useLocalStorage = <T,>(
 
   const setValue = (value: T | ((prop: T) => T)) => {
     try {
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
 
       setStoredValue(valueToStore);
       if (typeof window !== 'undefined') {

@@ -2,39 +2,37 @@
 
 import Link from 'next/link';
 
-export default function MainFooter() {
+export default function Footer() {
   return (
-    <footer className="w-full py-8 bg-[var(--card)] border-t border-[var(--border)]">
-      <div className="container px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-4 max-w-full">
-        <div className="flex items-center space-x-2">
-          <span className="text-sm font-semibold text-[var(--foreground)] font-poppins">
+    <footer className='w-full border-t border-[var(--border)] bg-[var(--background)] py-6 text-[var(--muted-foreground)]'>
+      <div className='container flex flex-col md:flex-row items-center justify-between gap-4 px-4 sm:px-6 max-w-full'>
+        <div className='flex items-center space-x-2'>
+          <span className='font-bold font-poppins text-lg bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent'>
             YouTube PE Tracker
           </span>
-          <span className="text-sm text-[var(--muted-foreground)]">
-            © {new Date().getFullYear()} Community Project
-          </span>
         </div>
-        <nav className="flex flex-wrap justify-center gap-4 md:gap-6">
+        <nav className='flex items-center space-x-6' aria-label='Footer navigation'>
           <Link
-            href="/submit"
-            className="text-sm text-[var(--muted-foreground)] hover:text-[var(--primary)] transition-colors duration-200"
-          >
-            Submit Channel
-          </Link>
-          <Link
-            href="https://github.com/yourusername/yt-pe-tracker"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-[var(--muted-foreground)] hover:text-[var(--primary)] transition-colors duration-200"
-          >
-            GitHub
-          </Link>
-          <Link
-            href="/about"
-            className="text-sm text-[var(--muted-foreground)] hover:text-[var(--primary)] transition-colors duration-200"
+            href='/about'
+            className='hover:text-[var(--primary)] transition-colors duration-200'
           >
             About
           </Link>
+          <Link
+            href='/submit'
+            className='hover:text-[var(--primary)] transition-colors duration-200'
+          >
+            Submit Channel
+          </Link>
+          <a
+            href='https://github.com/svskaushik/yt-pe-tracker'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='hover:text-[var(--primary)] transition-colors duration-200'
+            aria-label='GitHub Repository'
+          >
+            GitHub
+          </a>
         </nav>
       </div>
     </footer>

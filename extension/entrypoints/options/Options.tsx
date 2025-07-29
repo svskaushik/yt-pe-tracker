@@ -14,6 +14,8 @@ const Options: React.FC = () => {
   });
   const [isSaving, setIsSaving] = useState(false);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
+  const [refreshStatus, setRefreshStatus] = useState<string | null>(null);
+  const [channelCount, setChannelCount] = useState<number | null>(null);
 
   // Load options on component mount
   useEffect(() => {
@@ -51,19 +53,25 @@ const Options: React.FC = () => {
   };
 
   const refreshData = async () => {
+    setIsSaving(true);
+    setRefreshStatus(null);
+    setChannelCount(null);
     try {
       const response = await browser.runtime.sendMessage({
         type: 'REFRESH_DATA'
       });
-      
       if (response.success) {
-        console.log('Data refreshed successfully');
+        const count = response.data?.channels?.length || 0;
         setLastSaved(new Date());
+        setChannelCount(count);
+        setRefreshStatus(`✅ Refreshed successfully. Fetched ${count} channels.`);
       } else {
-        console.error('Failed to refresh data:', response.error);
+        setRefreshStatus(`❌ Failed to refresh: ${response.error}`);
       }
-    } catch (error) {
-      console.error('Error refreshing data:', error);
+    } catch (error: any) {
+      setRefreshStatus(`❌ Error refreshing data: ${error.message || error}`);
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -71,7 +79,7 @@ const Options: React.FC = () => {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Header */}
-        <div className="bg-pe-500 text-white px-6 py-4">
+        <div className="bg-slate-700 text-white px-6 py-4">
           <h1 className="text-2xl font-bold">YT PE Tracker Options</h1>
           <p className="text-pe-100 mt-1">Configure your YouTube Private Equity tracker settings</p>
         </div>
@@ -142,25 +150,33 @@ const Options: React.FC = () => {
             </div>
 
             <div className="p-4 bg-gray-50 rounded-lg">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="font-medium text-gray-900">Manual Data Refresh</h3>
-                  <p className="text-sm text-gray-600 mt-1">
-                    Manually update the channel database from GitHub
-                  </p>
-                  {lastSaved && (
-                    <p className="text-xs text-gray-500 mt-1">
-                      Last updated: {lastSaved.toLocaleString()}
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-medium text-gray-900">Manual Data Refresh</h3>
+                    <p className="text-sm text-gray-600 mt-1">
+                      Manually update the channel database from GitHub
                     </p>
-                  )}
+                    {lastSaved && (
+                      <p className="text-xs text-gray-500 mt-1">
+                        Last updated: {lastSaved.toLocaleString()}
+                      </p>
+                    )}
+                  </div>
+                  <button
+                    onClick={refreshData}
+                    disabled={isSaving}
+                    className="px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-pe-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                  >
+                    {isSaving ? 'Refreshing...' : 'Refresh Now'}
+                  </button>
                 </div>
-                <button
-                  onClick={refreshData}
-                  disabled={isSaving}
-                  className="px-4 py-2 bg-pe-500 text-white rounded-lg hover:bg-pe-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-                >
-                  {isSaving ? 'Refreshing...' : 'Refresh Now'}
-                </button>
+                {refreshStatus && (
+                  <div className={`mt-2 text-sm ${refreshStatus.startsWith('✅') ? 'text-green-700' : 'text-red-700'}`}>{refreshStatus}</div>
+                )}
+                {channelCount !== null && (
+                  <div className="mt-1 text-xs text-gray-700">Channels loaded: {channelCount}</div>
+                )}
               </div>
             </div>
           </div>

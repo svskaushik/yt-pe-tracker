@@ -9,4 +9,3 @@ import { prisma } from './prisma';
 import { displayNumbers } from './utils';
 
 export { displayNumbers, fetcher, getDateCompare, logError, logInfo, prisma };
-

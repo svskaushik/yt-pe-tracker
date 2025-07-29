@@ -10,7 +10,13 @@ export interface ChannelData {
   subscriber_count: number | null;
   pe_firm: string;
   acquisition_date: string;
-  acquisition_type: 'full_acquisition' | 'majority_stake' | 'minority_stake' | 'partnership' | 'investment' | 'unknown';
+  acquisition_type:
+    | 'full_acquisition'
+    | 'majority_stake'
+    | 'minority_stake'
+    | 'partnership'
+    | 'investment'
+    | 'unknown';
   deal_value: number | null;
   deal_value_currency: string;
   status: 'confirmed' | 'rumored' | 'pending' | 'withdrawn' | 'denied';
@@ -32,14 +38,13 @@ export interface ChannelsData {
   channels: ChannelData[];
 }
 
-
-
 /**
  * Fetch channels data from GitHub raw URL (production-ready)
  */
 // eslint-disable-next-line no-restricted-globals, no-console
 export async function getChannelsServer(): Promise<ChannelData[]> {
-  const url = 'https://raw.githubusercontent.com/svskaushik/yt-pe-tracker/refs/heads/main/data/channels.min.json';
+  const url =
+    'https://raw.githubusercontent.com/svskaushik/yt-pe-tracker/refs/heads/main/data/channels.min.json';
   try {
     // Use globalThis.fetch for Node.js compatibility
     const res = await (globalThis.fetch as typeof fetch)(url, { cache: 'no-store' });
@@ -69,13 +74,13 @@ export async function getPEFirmsServer(): Promise<string[]> {
  */
 export function formatSubscriberCount(count: number | null): string {
   if (!count) return 'Unknown';
-  
+
   if (count >= 1000000) {
     return `${(count / 1000000).toFixed(1)}M`;
   } else if (count >= 1000) {
     return `${(count / 1000).toFixed(1)}K`;
   }
-  
+
   return count.toString();
 }
 
@@ -84,20 +89,20 @@ export function formatSubscriberCount(count: number | null): string {
  */
 export function formatDealValue(value: number | null, currency: string = 'USD'): string {
   if (!value) return 'Undisclosed';
-  
+
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: currency,
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-  
+
   if (value >= 1000000000) {
     return formatter.format(value / 1000000000) + 'B';
   } else if (value >= 1000000) {
     return formatter.format(value / 1000000) + 'M';
   }
-  
+
   return formatter.format(value);
 }
 

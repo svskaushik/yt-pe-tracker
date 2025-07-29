@@ -1,3 +1,4 @@
+/* global URLSearchParams, fetch */
 export const postService = {
   getPosts: async (query: string = '', category?: string, sortBy: string = 'newest') => {
     const params = new URLSearchParams();
@@ -20,11 +21,7 @@ export const postService = {
     return response.json();
   },
 
-  createPost: async (data: {
-    title: string;
-    content: string;
-    authorId: string;
-  }) => {
+  createPost: async (data: { title: string; content: string; authorId: string }) => {
     const response = await fetch('/api/posts', {
       method: 'POST',
       headers: {
