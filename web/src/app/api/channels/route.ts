@@ -1,7 +1,6 @@
-/* global process */
 import { readFileSync } from 'fs';
-import { join } from 'path';
 import { NextResponse } from 'next/server';
+import { join } from 'path';
 
 export async function GET() {
   try {

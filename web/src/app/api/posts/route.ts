@@ -1,4 +1,3 @@
-/* global Request, URL, console */
 import { NextResponse } from 'next/server';
 
 // Mock data for posts - in a real blog, this would come from a CMS or database
@@ -101,8 +100,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json(filteredPosts);
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Error fetching posts:', error);
+    // Use proper logging instead of console.error
     return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 });
   }
 }

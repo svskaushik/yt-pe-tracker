@@ -1,8 +1,9 @@
-import { Suspense } from 'react';
-import Link from 'next/link';
 import { ChevronLeft } from 'lucide-react';
+import Link from 'next/link';
+import { Suspense } from 'react';
+
 import { ChannelCard } from '../../../components/ChannelCard';
-import { getChannelsServer, formatDealValue } from '../../../lib/channelData';
+import { formatDealValue,getChannelsServer } from '../../../lib/channelData';
 
 interface FirmPageProps {
   params: Promise<{ pe_firm: string }>;

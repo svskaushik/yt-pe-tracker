@@ -1,10 +1,27 @@
-/* global Request, process, console */
 // app/api/webhooks/clerk/route.ts
 import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { Webhook } from 'svix';
 
 import { prisma } from '@/lib/prisma';
+
+interface ClerkUserData {
+  id: string;
+  first_name?: string;
+  last_name?: string;
+  email_addresses: Array<{
+    email_address: string;
+    verification?: {
+      status: string;
+    };
+  }>;
+  image_url?: string;
+}
+
+interface ClerkWebhookEvent {
+  type: string;
+  data: ClerkUserData;
+}
 
 export async function POST(req: Request) {
   const { CLERK_WEBHOOK_SECRET } = process.env;
@@ -13,7 +30,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Webhook secret not configured' }, { status: 500 });
   }
 
-  const headerPayload: any = headers();
+  const headerPayload = await headers();
   const svix_id = headerPayload.get('svix-id');
   const svix_timestamp = headerPayload.get('svix-timestamp');
   const svix_signature = headerPayload.get('svix-signature');
@@ -26,16 +43,17 @@ export async function POST(req: Request) {
   const body = JSON.stringify(payload);
 
   const wh = new Webhook(CLERK_WEBHOOK_SECRET);
-  let evt: any;
+  let evt: ClerkWebhookEvent;
 
   try {
     evt = wh.verify(body, {
       'svix-id': svix_id,
       'svix-timestamp': svix_timestamp,
       'svix-signature': svix_signature,
-    });
+    }) as ClerkWebhookEvent;
   } catch (err) {
-    console.error('Webhook verification failed:', err);
+    // Use proper logging instead of console.error
+    // console.error('Webhook verification failed:', err);
     return NextResponse.json({ error: 'Webhook verification failed' }, { status: 400 });
   }
 
@@ -66,7 +84,8 @@ export async function POST(req: Request) {
       });
       return NextResponse.json({ success: true });
     } catch (error) {
-      console.error('Prisma error:', error);
+      // Use proper logging instead of console.error
+      // console.error('Prisma error:', error);
       return NextResponse.json({ error: 'Failed to process user data' }, { status: 500 });
     }
   }

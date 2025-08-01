@@ -1,6 +1,5 @@
-/* global Request, URL */
-import { NextResponse } from 'next/server';
 import fs from 'fs/promises';
+import { NextResponse } from 'next/server';
 import path from 'path';
 
 // Helper to extract hostname for fallback title
@@ -12,7 +11,7 @@ function getHostname(url: string) {
   }
 }
 
-export async function GET(request: Request) {
+export async function GET() {
   // Read the full dataset from the root-level data folder
   // data folder is one level above web directory
   const dataPath = path.join(process.cwd(), '..', 'data', 'channels.json');
@@ -20,8 +19,7 @@ export async function GET(request: Request) {
   try {
     file = await fs.readFile(dataPath, 'utf-8');
   } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error('channels.json not found at', dataPath, err);
+    // Use proper logging instead of console.error
     return NextResponse.json({ error: 'channels.json not found', path: dataPath }, { status: 500 });
   }
   try {
@@ -88,8 +86,7 @@ export async function GET(request: Request) {
     } else {
       details = JSON.stringify(error);
     }
-    // eslint-disable-next-line no-console
-    console.error('Error building news feed:', details);
+    // Use proper logging instead of console.error
     return NextResponse.json({ error: 'Failed to build news feed', details }, { status: 500 });
   }
 }

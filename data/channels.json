@@ -1,27 +1,26 @@
 {
   "meta": {
-    "generated_at": "2025-07-28T12:00:00.000Z",
+    "generated_at": "2025-07-29T04:33:47.830Z",
     "version": "1.0.0",
-    "total_channels": 5,
+    "total_channels": 29,
     "description": "YouTube Channel Private Equity Ownership Database"
   },
   "channels": [
     {
-  "id": "550e8400-e29b-41d4-a716-446655440001",
-  "channel_id": "UCX6OQ3DkcsbYNE6H8uQQuVA",
-  "channel_name": "MrBeast",
-  "channel_handle": "@MrBeast",
-  "subscriber_count": 252000000,
-  "pe_firm": "Night Capital (Chernin Group & Night Inc.)",
-  "acquisition_date": "2022-09-13",
-  "acquisition_type": "investment",
-  "deal_value": 100000000,
-  "deal_value_currency": "USD",
-  "status": "confirmed",
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "channel_id": "UCX6OQ3DkcsbYNE6H8uQQuVA",
+      "channel_name": "MrBeast",
+      "channel_handle": "@MrBeast",
+      "subscriber_count": 252000000,
+      "pe_firm": "Night Capital (Chernin Group & Night Inc.)",
+      "acquisition_date": "2022-09-13",
+      "acquisition_type": "investment",
+      "deal_value": 100000000,
+      "deal_value_currency": "USD",
+      "status": "confirmed",
       "source_url": "https://variety.com/2022/digital/news/tcg-night-inc-investment-firm-mrbeast-1235371311/",
       "additional_sources": [
-        "https://deadline.com/2022/09/chernin-group-night-capital-mr-beast-1235118136/",
-        "https://www.hollywoodreporter.com/business/business-news/mrbeast-logan-paul-wall-street-influencers-1235893535/"
+        "https://deadline.com/2022/09/chernin-group-night-capital-mr-beast-1235118136/|https://www.hollywoodreporter.com/business/business-news/mrbeast-logan-paul-wall-street-influencers-1235893535/"
       ],
       "notes": "Night Capital formed as $100M investment vehicle by Chernin Group and Night Inc. to acquire consumer-facing companies in partnership with leading talent. MrBeast later left Night Media in 2024.",
       "last_updated": "2025-07-28T12:00:00Z",
@@ -39,14 +38,13 @@
       "subscriber_count": 18500000,
       "pe_firm": "Vox Media",
       "acquisition_date": "2021-08-13",
-  "acquisition_type": "partnership",
+      "acquisition_type": "partnership",
       "deal_value": null,
       "deal_value_currency": "USD",
       "status": "confirmed",
       "source_url": "https://www.tubefilter.com/2021/08/13/marques-brownlee-waveform-podcast-vox-media-podcast-network/",
       "additional_sources": [
-        "https://www.tubefilter.com/2019/04/19/marques-brownlee-youtube-original-retro-tech-vox/",
-        "https://www.generalatlantic.com/media-article/vox-media-ga-announce-strategic-partnership/"
+        "https://www.tubefilter.com/2019/04/19/marques-brownlee-youtube-original-retro-tech-vox/|https://www.generalatlantic.com/media-article/vox-media-ga-announce-strategic-partnership/"
       ],
       "notes": "Partnership includes Waveform podcast on Vox Media Podcast Network and co-production of Retro Tech series with Vox Media Studios. Multiple collaborative projects since 2014.",
       "last_updated": "2025-07-28T12:00:00Z",
@@ -70,8 +68,7 @@
       "status": "confirmed",
       "source_url": "https://variety.com/2019/digital/news/studio71-jacksepticeye-joey-graceffa-1203259666/",
       "additional_sources": [
-        "https://www.voanews.com/a/irish-youtuber-moves-millions-of-followers-to-donate-millions-for-charity-/7887932.html",
-        "https://shorefire.com/releases/entry/worldwide-premiere-of-jacksepticeyes-biographical-documentary-how-did-we-get-here-to-be-presented-exclusively-via-moment-house-on-february-28th"
+        "https://www.voanews.com/a/irish-youtuber-moves-millions-of-followers-to-donate-millions-for-charity-/7887932.html|https://shorefire.com/releases/entry/worldwide-premiere-of-jacksepticeyes-biographical-documentary-how-did-we-get-here-to-be-presented-exclusively-via-moment-house-on-february-28th"
       ],
       "notes": "Partnership with Studio71 for management and brand development. Known for charity work through 'Thankmas' initiative and positive community engagement.",
       "last_updated": "2025-07-28T12:00:00Z",
@@ -81,7 +78,6 @@
         "entertainment"
       ]
     },
-  
     {
       "id": "550e8400-e29b-41d4-a716-446655440005",
       "channel_id": "UC-lHJZR3Gqxm24_Vd_AJ5Yw",
@@ -96,8 +92,7 @@
       "status": "confirmed",
       "source_url": "https://web.archive.org/web/20160117224034/http:/variety.com/2016/digital/news/pewdiepie-revelmode-network-1201678900/",
       "additional_sources": [
-        "https://www.techtimes.com/articles/124380/20160114/pewdiepie-and-disneys-maker-studios-launch-revelmode-network.htm",
-        "https://gizmodo.com/disney-gave-pewdiepie-a-giant-pile-of-money-to-give-to-1752814801"
+        "https://www.techtimes.com/articles/124380/20160114/pewdiepie-and-disneys-maker-studios-launch-revelmode-network.htm|https://gizmodo.com/disney-gave-pewdiepie-a-giant-pile-of-money-to-give-to-1752814801"
       ],
       "notes": "Partnership with Disney's Maker Studios since 2012, launched Revelmode network in 2016 as expansion of collaboration. Maker Studios was acquired by Disney for $500M in 2014.",
       "last_updated": "2025-07-28T12:00:00Z",
@@ -126,7 +121,9 @@
       "notes": "Strategic investment allowing Derek Muller to focus on content creation while Electrify handles business operations",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["education"]
+      "tags": [
+        "education"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440011",
@@ -147,7 +144,10 @@
       "notes": "Programming and technology education channel",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["tech", "education"]
+      "tags": [
+        "tech",
+        "education"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440012",
@@ -168,7 +168,9 @@
       "notes": "Astronomy and space science content",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["education"]
+      "tags": [
+        "education"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440013",
@@ -187,7 +189,9 @@
       "notes": "Historical education and animated content",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["education"]
+      "tags": [
+        "education"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440014",
@@ -206,7 +210,9 @@
       "notes": "Aviation education and pilot training content",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["education"]
+      "tags": [
+        "education"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440015",
@@ -216,7 +222,7 @@
       "subscriber_count": 200000000,
       "pe_firm": "Spotter",
       "acquisition_date": "2022-02-16",
-      "acquisition_type": "licensing_deal",
+      "acquisition_type": "partnership",
       "deal_value": 30000000,
       "deal_value_currency": "USD",
       "status": "confirmed",
@@ -227,7 +233,9 @@
       "notes": "Spotter licensed back catalog for ad revenue sharing, deal valued up to $30M",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["entertainment"]
+      "tags": [
+        "entertainment"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440016",
@@ -237,7 +245,7 @@
       "subscriber_count": 59000000,
       "pe_firm": "Spotter",
       "acquisition_date": "2022-02-16",
-      "acquisition_type": "licensing_deal",
+      "acquisition_type": "partnership",
       "deal_value": null,
       "deal_value_currency": "USD",
       "status": "confirmed",
@@ -248,7 +256,10 @@
       "notes": "Multi-year licensing deal with Spotter for back catalog monetization",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["sports", "entertainment"]
+      "tags": [
+        "sports",
+        "entertainment"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440017",
@@ -258,7 +269,7 @@
       "subscriber_count": 113000000,
       "pe_firm": "Spotter",
       "acquisition_date": "2022-02-16",
-      "acquisition_type": "licensing_deal",
+      "acquisition_type": "partnership",
       "deal_value": null,
       "deal_value_currency": "USD",
       "status": "confirmed",
@@ -269,7 +280,10 @@
       "notes": "Children's content creator with Spotter licensing deal",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["entertainment", "family"]
+      "tags": [
+        "entertainment",
+        "family"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440018",
@@ -290,7 +304,11 @@
       "notes": "MatPat sold Theorist Media to Lunar X but remains CEO and frontman",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["gaming", "education", "other"]
+      "tags": [
+        "gaming",
+        "education",
+        "other"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440019",
@@ -311,7 +329,10 @@
       "notes": "Part of Theorist Media acquisition by Lunar X",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["entertainment", "other"]
+      "tags": [
+        "entertainment",
+        "other"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440020",
@@ -330,7 +351,11 @@
       "notes": "Part of Theorist Media acquisition by Lunar X",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["food", "education", "other"]
+      "tags": [
+        "food",
+        "education",
+        "other"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440021",
@@ -349,7 +374,10 @@
       "notes": "Live streaming channel part of Theorist Media acquisition",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["gaming", "entertainment"]
+      "tags": [
+        "gaming",
+        "entertainment"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440022",
@@ -368,7 +396,10 @@
       "notes": "Largest automotive brand on YouTube acquired by Recurrent Ventures",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["entertainment", "education"]
+      "tags": [
+        "entertainment",
+        "education"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440023",
@@ -378,7 +409,7 @@
       "subscriber_count": 175000000,
       "pe_firm": "Moonbug Entertainment (Candle Media/Blackstone)",
       "acquisition_date": "2021-03-01",
-      "acquisition_type": "acquisition",
+      "acquisition_type": "full_acquisition",
       "deal_value": 3000000000,
       "deal_value_currency": "USD",
       "status": "confirmed",
@@ -389,7 +420,10 @@
       "notes": "Part of $3B Moonbug acquisition by Blackstone-backed Candle Media",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["kids", "education"]
+      "tags": [
+        "family",
+        "education"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440024",
@@ -399,7 +433,7 @@
       "subscriber_count": 17900000,
       "pe_firm": "Moonbug Entertainment (Candle Media/Blackstone)",
       "acquisition_date": "2021-03-01",
-      "acquisition_type": "acquisition",
+      "acquisition_type": "full_acquisition",
       "deal_value": 3000000000,
       "deal_value_currency": "USD",
       "status": "confirmed",
@@ -408,7 +442,11 @@
       "notes": "Part of $3B Moonbug acquisition by Blackstone-backed Candle Media",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["kids", "education", "entertainment"]
+      "tags": [
+        "family",
+        "education",
+        "entertainment"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440025",
@@ -417,11 +455,11 @@
       "channel_handle": "@ColinandSamir",
       "subscriber_count": 1600000,
       "pe_firm": "Unknown PE Firm",
-      "acquisition_date": null,
-      "acquisition_type": "partial_acquisition",
+      "acquisition_date": "2022-01-01",
+      "acquisition_type": "minority_stake",
       "deal_value": null,
       "deal_value_currency": "USD",
-      "status": "reported",
+      "status": "rumored",
       "source_url": "https://www.youtube.com/watch?v=hJ-rRXWhElI",
       "additional_sources": [
         "https://www.dailydot.com/news/youtube-channel-private-equity/"
@@ -429,7 +467,10 @@
       "notes": "Mentioned as partially acquired but specific PE firm not disclosed",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["business", "other"]
+      "tags": [
+        "business",
+        "other"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440026",
@@ -439,7 +480,7 @@
       "subscriber_count": 2100000,
       "pe_firm": "Recurrent Ventures",
       "acquisition_date": "2021-11-09",
-      "acquisition_type": "acquisition",
+      "acquisition_type": "full_acquisition",
       "deal_value": null,
       "deal_value_currency": "USD",
       "status": "confirmed",
@@ -448,7 +489,10 @@
       "notes": "Military and defense content channel owned by Recurrent Ventures",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["education", "other"]
+      "tags": [
+        "education",
+        "other"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440027",
@@ -467,7 +511,9 @@
       "notes": "Self-improvement and productivity content",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["education"]
+      "tags": [
+        "education"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440028",
@@ -486,7 +532,9 @@
       "notes": "LEGO building and creative content",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["entertainment"]
+      "tags": [
+        "entertainment"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440029",
@@ -507,7 +555,10 @@
       "notes": "Kid-friendly puppet show content (10M subscribers combined with The Fizzy Show)",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["kids", "entertainment"]
+      "tags": [
+        "family",
+        "entertainment"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440030",
@@ -516,11 +567,11 @@
       "channel_handle": "@economicsexplained",
       "subscriber_count": 2800000,
       "pe_firm": "Unknown PE Firm",
-      "acquisition_date": null,
-      "acquisition_type": "acquisition",
+      "acquisition_date": "2022-01-01",
+      "acquisition_type": "unknown",
       "deal_value": null,
       "deal_value_currency": "USD",
-      "status": "reported",
+      "status": "rumored",
       "source_url": "https://www.youtube.com/watch?v=hJ-rRXWhElI",
       "additional_sources": [
         "https://www.turkiyetoday.com/culture/private-equitys-quiet-takeover-of-youtube-is-reshaping-online-media-3204624"
@@ -528,7 +579,10 @@
       "notes": "Economics education channel reportedly acquired but specific firm not disclosed",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["education", "business"]
+      "tags": [
+        "education",
+        "business"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440031",
@@ -537,17 +591,20 @@
       "channel_handle": "@historyhit",
       "subscriber_count": 1200000,
       "pe_firm": "Unknown PE Firm",
-      "acquisition_date": null,
-      "acquisition_type": "acquisition",
+      "acquisition_date": "2022-01-01",
+      "acquisition_type": "unknown",
       "deal_value": null,
       "deal_value_currency": "USD",
-      "status": "reported",
+      "status": "rumored",
       "source_url": "https://www.turkiyetoday.com/culture/private-equitys-quiet-takeover-of-youtube-is-reshaping-online-media-3204624",
       "additional_sources": null,
       "notes": "Historical content channel reportedly acquired but specific firm not disclosed",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["history", "education"]
+      "tags": [
+        "other",
+        "education"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440032",
@@ -557,7 +614,7 @@
       "subscriber_count": 16800000,
       "pe_firm": "Spotter",
       "acquisition_date": "2022-02-16",
-      "acquisition_type": "licensing_deal",
+      "acquisition_type": "partnership",
       "deal_value": null,
       "deal_value_currency": "USD",
       "status": "confirmed",
@@ -568,7 +625,10 @@
       "notes": "Minecraft gaming content creator with Spotter licensing deal",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["gaming", "entertainment"]
+      "tags": [
+        "gaming",
+        "entertainment"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440033",
@@ -578,7 +638,7 @@
       "subscriber_count": 580000,
       "pe_firm": "Spotter",
       "acquisition_date": "2022-02-16",
-      "acquisition_type": "licensing_deal",
+      "acquisition_type": "partnership",
       "deal_value": null,
       "deal_value_currency": "USD",
       "status": "confirmed",
@@ -589,7 +649,9 @@
       "notes": "BBQ and grilling content with Spotter licensing deal",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["food"]
+      "tags": [
+        "food"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440034",
@@ -610,7 +672,9 @@
       "notes": "Formerly Fine Brothers Entertainment, acquired by Electric Monster then sold to ZATV/Brat TV",
       "last_updated": "2025-07-28T12:00:00Z",
       "verified_by": "research_team",
-  "tags": ["entertainment"]
+      "tags": [
+        "entertainment"
+      ]
     }
   ]
 }

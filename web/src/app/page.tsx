@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
-import { getChannelsServer, getPEFirmsServer } from '../lib/channelData';
+
 import { ClientChannelGrid } from '../components/ClientChannelGrid';
+import { getChannelsServer, getPEFirmsServer } from '../lib/channelData';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 

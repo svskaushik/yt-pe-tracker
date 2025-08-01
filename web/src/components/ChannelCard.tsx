@@ -1,11 +1,12 @@
-import * as React from 'react';
 import Link from 'next/link';
+import * as React from 'react';
+
 import {
-  formatSubscriberCount,
-  formatDealValue,
-  getYouTubeURL,
-  getConfidenceLevel,
   type ChannelData,
+  formatDealValue,
+  formatSubscriberCount,
+  getConfidenceLevel,
+  getYouTubeURL,
 } from '../lib/channelData';
 import { ConfidenceBadge } from './ui/confidence-badge';
 

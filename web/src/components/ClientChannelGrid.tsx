@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+
 import { ChannelCard } from '../components/ChannelCard';
 import { SearchAndFilter } from '../components/SearchAndFilter';
 import { ChannelData } from '../lib/channelData';

@@ -1,4 +1,3 @@
-/* global React, setTimeout, window */
 'use client';
 
 import { AlertCircle, ArrowRight, RefreshCw } from 'lucide-react';

@@ -1,12 +1,14 @@
 // app/layout.tsx
+import '../styles/globals.css';
+
+import { ClerkProvider } from '@clerk/nextjs';
 import { Inter, Poppins } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
-import { ClerkProvider } from '@clerk/nextjs';
+
 import MainFooter from '../components/Footer/index';
 import MainNavbar from '../components/Navbar';
 import { QueryProvider } from '../providers/query';
 import { ThemeProvider } from '../providers/theme';
-import '../styles/globals.css';
 import type { ChildrenProps } from '../types';
 
 const inter = Inter({
